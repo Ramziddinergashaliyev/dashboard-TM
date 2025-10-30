@@ -1,8 +1,11 @@
 import React from 'react'
+import "./gifts.scss"
 
 const Gifts = () => {
   return (
-    <div>Gifts</div>
+    <div className='gifts'>
+      <p>Gifts</p>
+    </div>
   )
 }
 

@@ -15,7 +15,7 @@ function AdminHeader({ setClose }) {
 
       <div className="products__top__right">
         <div className="products__top__right-form">
-          <input type="text" />
+          <input placeholder="search..." type="text" />
           <FiSearch />
         </div>
 

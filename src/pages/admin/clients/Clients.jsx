@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Search, Download, Plus, ChevronLeft, ChevronRight } from 'lucide-react';
 import './clients.scss';
+import { IoMdSettings } from 'react-icons/io';
+import { VscDebugRestart } from 'react-icons/vsc';
 
 const Clients = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
-  // Sample data
   const [clients] = useState([
     { id: 1, firstName: 'Aziz', lastName: 'Karimov', phone: '+998901234567', giftsCount: 5, registerDate: '2024-01-15' },
     { id: 2, firstName: 'Dilnoza', lastName: 'Rahimova', phone: '+998907654321', giftsCount: 3, registerDate: '2024-02-20' },
@@ -32,31 +33,31 @@ const Clients = () => {
   return (
     <div className='clients'>
       <div className="clients-header">
-        <div className="clients-controls">
-          <div className="search-box">
-            <Search className="search-icon" size={18} />
+        <div className="clients-header-controls">
+          <div className="clients-header-controls-search-box">
+            <Search className="clients-header-controls-search-box-icon" size={18} />
             <input
               type="text"
               placeholder="Search"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="search-input"
+              className="clients-header-controls-search-box-input"
             />
           </div>
-          <div className="action-buttons">
+          <div className="clients-header-controls-action-buttons">
             <button className="btn-action btn-download">
-              <Download size={18} />
+              <VscDebugRestart />
             </button>
             <button className="btn-action btn-add">
-              <Plus size={18} />
+              <IoMdSettings />
             </button>
           </div>
         </div>
       </div>
 
-      <div className="table-container">
-        <div className="table-wrapper">
-          <table className="clients-table">
+      <div className="clients-table">
+        <div className="clients-table-wrapper">
+          <table className="clients-table-wrapper-container">
             <thead>
               <tr>
                 <th>First name</th>
@@ -93,26 +94,25 @@ const Clients = () => {
           </table>
         </div>
 
-        {/* Pagination */}
-        <div className="pagination">
-          <div className="pagination-controls">
+        <div className="clients-pagination">
+          <div className="clients-pagination-controls">
             <button
               onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
               disabled={currentPage === 1}
-              className="pagination-btn"
+              className="clients-pagination-controls-btn"
             >
               <ChevronLeft size={18} />
             </button>
-            <span className="pagination-current">{currentPage}</span>
+            <span className="clients-pagination-controls-current">{currentPage}</span>
             <button
               onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
               disabled={currentPage === totalPages}
-              className="pagination-btn"
+              className="clients-pagination-controls-btn"
             >
               <ChevronRight size={18} />
             </button>
           </div>
-          <div className="pagination-info">
+          <div className="clients-pagination-info">
             <span>{itemsPerPage} / page</span>
             <select
               value={itemsPerPage}
@@ -120,7 +120,7 @@ const Clients = () => {
                 setItemsPerPage(Number(e.target.value));
                 setCurrentPage(1);
               }}
-              className="pagination-select"
+              className="clients-pagination-info-select"
             >
               <option value={5}>5</option>
               <option value={10}>10</option>
