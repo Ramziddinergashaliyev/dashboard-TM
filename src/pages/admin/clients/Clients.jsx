@@ -19,21 +19,22 @@ const Clients = () => {
     { id: 7, firstName: 'Otabek', lastName: 'Sharipov', phone: '+998902223344', giftsCount: 4, registerDate: '2024-07-22' },
     { id: 8, firstName: 'Nilufar', lastName: 'Ergasheva', phone: '+998908889999', giftsCount: 9, registerDate: '2024-08-30' },
   ]);
-
+  
   const filteredClients = clients.filter(client =>
     (client.firstName?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
     (client.lastName?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
     (client.phone || '').includes(searchTerm)
   );
-
+  
   const totalPages = Math.ceil(filteredClients.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedClients = filteredClients.slice(startIndex, startIndex + itemsPerPage);
-
+  
   return (
     <div className='clients'>
       <div className="clients-header">
         <div className="clients-header-controls">
+          
           <div className="clients-header-controls-search-box">
             <Search className="clients-header-controls-search-box-icon" size={18} />
             <input
@@ -44,6 +45,7 @@ const Clients = () => {
               className="clients-header-controls-search-box-input"
             />
           </div>
+
           <div className="clients-header-controls-action-buttons">
             <button className="btn-action btn-download">
               <VscDebugRestart />
@@ -52,12 +54,14 @@ const Clients = () => {
               <IoMdSettings />
             </button>
           </div>
+             
         </div>
       </div>
 
       <div className="clients-table">
         <div className="clients-table-wrapper">
           <table className="clients-table-wrapper-container">
+            
             <thead>
               <tr>
                 <th>First name</th>
@@ -68,6 +72,7 @@ const Clients = () => {
                 <th>Action</th>
               </tr>
             </thead>
+
             <tbody>
               {paginatedClients.length > 0 ? (
                 paginatedClients.map((client) => (
@@ -91,6 +96,7 @@ const Clients = () => {
                 </tr>
               )}
             </tbody>
+            
           </table>
         </div>
 
