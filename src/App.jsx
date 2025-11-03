@@ -9,7 +9,7 @@ import Codes from './pages/admin/codes/Codes'
 const App = () => {
   return (
       <Routes>
-        <Route path='/dashboard' element={<Admin/>}>
+        <Route path='/' element={<Admin/>}>
            <Route path='dashboard' element={<Dashboard/>}/>
            <Route path='clients' element={<Clients/>}/>
            <Route path='gifts' element={<Gifts/>}/>
